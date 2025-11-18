@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  c1:
+    build:
+      context: ./C1
+      args:
+        UBUNTU_VERSION: "16.10"
+    container_name: C1
+    networks:
+      - labnet
+
+  c2:
+    build:
+      context: ./C2
+      args:
+        UBUNTU_VERSION: "18.10"
+    container_name: C2
+    networks:
+      - labnet
+
+  c3:
+    build:
+      context: ./C3
+      args:
+        UBUNTU_VERSION: "20.10"
+    container_name: C3
+    networks:
+      - labnet
+
+  c4:
+    build:
+      context: ./C4
+      args:
+        UBUNTU_VERSION: "22.10"
+    container_name: C4
+    networks:
+      - labnet
+    ports:
+      - "2222:22"         # para conectar desde host
+    tty: true
+
+networks:
+  labnet:
+    driver: bridge
